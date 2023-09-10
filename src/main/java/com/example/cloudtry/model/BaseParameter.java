@@ -7,17 +7,17 @@ public class BaseParameter {
     /**
      * 创建时间
      */
-    private Long createTime = DateUtil.date().getTime();
+    private Long createTime = DateUtil.current();
 
     /**
      * 修改时间
      */
-    private Long updateTime = DateUtil.date().getTime();
+    private Long updateTime = DateUtil.current();
 
     /**
      * 是否已删除
      */
-    private Integer isDelete = YesOrNoEnum.NO.code();
+    private Integer isDelete = YesOrNoEnum.NO.getCode();
 
     public Long getCreateTime() {
         return createTime;

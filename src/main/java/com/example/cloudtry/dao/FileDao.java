@@ -1,15 +1,30 @@
 package com.example.cloudtry.dao;
 
+import com.alibaba.fastjson.JSONObject;
+import com.example.cloudtry.model.storage.BaseInfo;
 import com.example.cloudtry.model.storage.MiniInfo;
 
 import java.util.List;
 
 public class FileDao {
+    public static boolean isFileExist(long id){
+        return false;
+    }
+    /*若是此id找不到，则返回null*/
+    public static JSONObject getBucketNameAndObjectKey(long id){
+        return null;
+    }
     public static List<MiniInfo> getMiniChildList(long folderId){
         return null;
     }
-    /*pairList的示例*/
-    //[{"id":"1234","type":"0"},{"id":"1235","type":"1"}"]
+
+    /*getRootList返回的是BaseInfo的引用，但是每个BaseInfo要引用FileInfo或FolderInfo(父类引用子类)*/
+    public static List<BaseInfo> getRootListById(long userId){
+        return null;
+    }
+    public static List<BaseInfo> getRootListByName(String name){
+        return null;
+    }
     public static void changeParent(List<MiniInfo>childs, long newPid){
 
     }

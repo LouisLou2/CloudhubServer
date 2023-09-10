@@ -1,10 +1,8 @@
 package com.example.cloudtry.model.storage;
 
-public class BaseInfo {
-    private long id;
-    /**
-     * 父级目录 id(parent folder id)
-     */
+import com.example.cloudtry.common.enums.BaseTypeEnum;
+
+public class BaseInfo extends MiniInfo {
     private long userId;
     private String name;
     private long timeStamp;
@@ -12,24 +10,21 @@ public class BaseInfo {
     /**
      * 所有祖先目录 id
      */
-    private String ancestors;
 
     //constructors
     public BaseInfo() {
+        super(0L, BaseTypeEnum.FOLDER);
         //默认构造函数将设置默认值
         this.userId = 0;
-        this.id = 0L;
         this.pid = 0L;
         this.name = "root";
-        this.ancestors = "0";
         this.timeStamp = 0L;
     }
-    public BaseInfo(long id,long userId,String name, long timeStamp, long pid,  String ancestors) {
+    public BaseInfo(long id,BaseTypeEnum type,long userId,String name, long timeStamp, long pid) {
+        super(id, type);
         this.userId = userId;
-        this.id = id;
         this.pid = pid;
         this.name = name;
-        this.ancestors = ancestors;
         this.timeStamp = timeStamp;
     }
 
@@ -42,13 +37,6 @@ public class BaseInfo {
         this.userId = userId;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public long getPid() {
         return pid;
@@ -65,14 +53,6 @@ public class BaseInfo {
     public BaseInfo setName(String name) {
         this.name = name;
         return this;
-    }
-
-    public String getAncestors() {
-        return ancestors;
-    }
-
-    public void setAncestors(String ancestors) {
-        this.ancestors = ancestors;
     }
 
     public long getTimeStamp() {

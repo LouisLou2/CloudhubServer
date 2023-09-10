@@ -96,4 +96,10 @@ public class JsonTools {
         obj.put("demand",false);
         return obj;
     }
+    public static JSONObject initRawDownloadInfo(){
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.OPERATE.UNKNOWN_FAILURE.getCode());
+        obj.put("obs",null);
+        return obj;
+    }
 }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDao {
-
     public static boolean checkUserExist(String userName) {
         return false;
     }
@@ -25,8 +24,10 @@ public class UserDao {
     public static void updateUser(User user) {
         // 实现更新用户的逻辑
     }
-
-    public static User queryUserById(String id) {
+    public static User queryUserByName(String userName) {
+        return null;
+    }
+    public static User queryUserById(long id) {
         return null;
     }
 

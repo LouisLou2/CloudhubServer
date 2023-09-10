@@ -1,5 +1,6 @@
 package com.example.cloudtry.model.storage;
 
+import com.example.cloudtry.common.enums.BaseTypeEnum;
 import com.example.cloudtry.common.enums.FileTypeEnum;
 
 public class FileInfo extends BaseInfo {
@@ -12,9 +13,11 @@ public class FileInfo extends BaseInfo {
     //constructor
     public FileInfo() {
     }
-    public FileInfo(long id,long userId,String hash, String name, long size, FileTypeEnum type,long timeStamp, long pid, String ancestors, String bucketName, String objectKey) {
-        super(id,userId, name,timeStamp,pid,ancestors);
+    public FileInfo(long id,long userId,String hash, String name, long size, FileTypeEnum type,long timeStamp, long pid,String bucketName, String objectKey) {
+        super(id, BaseTypeEnum.FILE, userId,name,timeStamp,pid);
         this.hash = hash;
+        this.size = size;
+        this.type = type;
         this.bucketName = bucketName;
         this.objectKey = objectKey;
     }

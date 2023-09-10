@@ -1,5 +1,6 @@
 package com.example.cloudtry.model.storage;
 
+import com.example.cloudtry.common.enums.BaseTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,5 +10,5 @@ import lombok.Setter;
 @Getter
 public class MiniInfo {
     private long id;
-    private int type;
+    private BaseTypeEnum baseType;
 }

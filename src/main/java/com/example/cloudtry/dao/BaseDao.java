@@ -29,7 +29,7 @@ public class BaseDao {
      * @param file_id 文件的唯一id
      * @return 返回一个boolean,表示是否存在相同的文件
      */
-    public static boolean SameFileCheck(String user_id,String file_id){
+    public static boolean SameFileCheck(String user_id,long file_id){
         return false;
     }
 

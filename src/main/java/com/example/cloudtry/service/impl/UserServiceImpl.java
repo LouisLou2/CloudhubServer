@@ -5,11 +5,10 @@ import com.example.cloudtry.common.enums.RequestEnum;
 import com.example.cloudtry.common.result.AppResultCode;
 import com.example.cloudtry.dao.UserDao;
 import com.example.cloudtry.model.User;
-import com.example.cloudtry.service.FileService;
 import com.example.cloudtry.service.UserService;
 import com.example.cloudtry.service.managers.UserManager;
 import com.example.cloudtry.utils.JsonTools;
-import jakarta.annotation.Resource;
+import com.example.cloudtry.dao.FileDao;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -22,8 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserServiceImpl implements UserService {
-    @Resource(name = "fileService")
-    private FileService fileService;
 
     @Override
     @GetMapping("/signup")
@@ -77,7 +74,7 @@ public class UserServiceImpl implements UserService {
         else {
             jresp.put("resultCode", AppResultCode.SignIn.SUCCESS);
             jresp.put("User", UserDao.queryUserByName(userName));
-            jresp.put("rootList", fileService.queryRootList(userName));
+            jresp.put("rootList", FileDao.getRootListByName(userName));
         }
         String jrespStr =jresp.toJSONString();
         // 设置响应头，指定 Content-Type 为 application/json

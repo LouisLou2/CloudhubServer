@@ -36,4 +36,7 @@ public class FileOperateValidator {
     public static boolean MoveCheck(long id,List<MiniInfo>list){
         return !FileDao.isDescendantOfAny(id,list);
     }
+    public static boolean isFileExist(long id){
+        return FileDao.isFileExist(id);
+    }
 }
