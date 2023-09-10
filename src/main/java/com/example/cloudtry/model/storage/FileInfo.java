@@ -1,9 +1,9 @@
 package com.example.cloudtry.model.storage;
 
-import com.example.cloudtry.common.constant.enums.FileTypeEnum;
+import com.example.cloudtry.common.enums.FileTypeEnum;
 
 public class FileInfo extends BaseInfo {
-    private String fileId;//fileId就是文件的哈希码，仅与文件的字节内容有关
+    private String hash;//fileId就是文件的哈希码，仅与文件的字节内容有关
     private long size;
     private FileTypeEnum type;
     private String bucketName;
@@ -12,20 +12,12 @@ public class FileInfo extends BaseInfo {
     //constructor
     public FileInfo() {
     }
-    public FileInfo(String unqId,long userId,String fileId, String name, long size, FileTypeEnum type,long timeStamp, String pid, String ancestors, String bucketName, String objectKey) {
-        super(unqId,userId, name,timeStamp,pid,ancestors);
-        this.fileId = fileId;
+    public FileInfo(long id,long userId,String hash, String name, long size, FileTypeEnum type,long timeStamp, long pid, String ancestors, String bucketName, String objectKey) {
+        super(id,userId, name,timeStamp,pid,ancestors);
+        this.hash = hash;
         this.bucketName = bucketName;
         this.objectKey = objectKey;
     }
-    public String getUnqId() {
-        return super.getUnqId();
-    }
-
-    public void setUnqId(String unqId) {
-        super.setUnqId(unqId);
-    }
-
 
     public long getSize() {
         return size;
@@ -42,12 +34,12 @@ public class FileInfo extends BaseInfo {
     public void setType(FileTypeEnum type) {
         this.type = type;
     }
-    public String getFileId() {
-        return fileId;
+    public String getHash() {
+        return hash;
     }
 
-    public void setFileId(String fileId) {
-        this.fileId = fileId;
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     public void setBucketName(String bucketName) {

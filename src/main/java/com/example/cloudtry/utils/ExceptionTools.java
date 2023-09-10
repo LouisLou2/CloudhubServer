@@ -1,6 +1,6 @@
 package com.example.cloudtry.utils;
 
-import com.example.cloudtry.common.constant.result.ResultInfo;
+import com.example.cloudtry.common.result.ResultInfo;
 import com.example.cloudtry.model.exceptions.BusinessException;
 import com.example.cloudtry.model.exceptions.DuplicateSubmissionException;
 import com.example.cloudtry.model.exceptions.NoAuthException;

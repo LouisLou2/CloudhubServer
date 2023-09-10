@@ -1,7 +1,7 @@
 package com.example.cloudtry.model;
 
 import cn.hutool.core.date.DateUtil;
-import com.example.cloudtry.common.constant.enums.YesOrNoEnum;
+import com.example.cloudtry.common.enums.YesOrNoEnum;
 
 public class BaseParameter {
     /**

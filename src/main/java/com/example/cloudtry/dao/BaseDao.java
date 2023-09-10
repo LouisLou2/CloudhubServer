@@ -1,6 +1,7 @@
 package com.example.cloudtry.dao;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.cloudtry.common.enums.BaseTypeEnum;
 import com.example.cloudtry.model.storage.FileInfo;
 
 public class BaseDao {
@@ -38,6 +39,15 @@ public class BaseDao {
      * @return: boolean 返回一个此文件是否需要真正上传(因为若是已经存在哈希码文件则不需要上传)
      */
     public static void addAFile(boolean exists, FileInfo afile){
+        return;
+    }
+
+    /*数据库中查找最大的已存在的Id*/
+    public static long MaxIdExisted(BaseTypeEnum type){
+        return 0L;
+    }
+    /*更新数据库中查找最大的已存在的*/
+    public static void updateMaxId(BaseTypeEnum type,long id){
         return;
     }
 }

@@ -6,7 +6,7 @@ public class FolderInfo extends BaseInfo{
         super();
     }
 
-    public FolderInfo(long userId, String unqId, String pid, String name, String ancestors,long timeStamp) {
-        super(unqId,userId, name,timeStamp,pid,ancestors);
+    public FolderInfo(long userId, long id, long pid, String name, String ancestors,long timeStamp) {
+        super(id,userId, name,timeStamp,pid,ancestors);
     }
 }

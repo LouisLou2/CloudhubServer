@@ -1,10 +1,7 @@
 package com.example.cloudtry.service;
 
-import com.example.cloudtry.model.User;
-import com.example.cloudtry.model.request.user.UserEnter;
-import com.example.cloudtry.model.request.user.UserInitializer;
-
-import java.util.List;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 用户服务接口
@@ -14,43 +11,18 @@ public interface UserService {
     /**
      * 初始化账户信息
      *
-     * @param initializer 账户邮箱和密码（加密过的）
      */
-    void initialize(UserInitializer initializer);
+    ResponseEntity<String> initialize(@RequestParam(name = "userName") String userName,
+                              @RequestParam(name = "phone") String email,
+                              @RequestParam(name = "password") String password,
+                              @RequestParam(name = "repassword") String repassword);
 
     /**
-     * 用户登录
-     *
-     * @param enter 邮箱地址与密码
-     * @return 会话 session id
+     * 登录
+     * @param userName
+     * @param password
+     * @return
      */
-    String enter(UserEnter enter);
-
-    /**
-     * 更新用户账户空间
-     *
-     * @param keys 失效 redis key
-     * @param user 更新的账户
-     */
-    void updateUserSpace(List<String> keys, User user);
-
-    /**
-     * 修改账户资料
-     *
-     * @param updater 要修改的资料
-     * @param user    当前登录的账户
-     * @return 修改后的账户资料
-     */
-    UserView updateUserInfo(UserUpdater updater, User user);
-
-    /**
-     * 修改账户密码
-     *
-     * @param updater 新密码
-     * @param user    当前登录的用户
-     * @return 修改后的账户资料
-     */
-    UserView updatePassword(PasswordUpdater updater, User user);
-
-    void updateUserSpace(List<String> keys, User user);
+    public ResponseEntity<String> enter(@RequestParam(name = "userName",required = true) String userName,
+                                        @RequestParam(name = "password") String password);
 }

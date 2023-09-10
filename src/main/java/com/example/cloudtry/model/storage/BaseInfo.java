@@ -1,14 +1,14 @@
 package com.example.cloudtry.model.storage;
 
 public class BaseInfo {
-    private String unqId;
+    private long id;
     /**
      * 父级目录 id(parent folder id)
      */
     private long userId;
     private String name;
     private long timeStamp;
-    private String pid;
+    private long pid;
     /**
      * 所有祖先目录 id
      */
@@ -18,15 +18,15 @@ public class BaseInfo {
     public BaseInfo() {
         //默认构造函数将设置默认值
         this.userId = 0;
-        this.unqId = "0";
-        this.pid = "0";
+        this.id = 0L;
+        this.pid = 0L;
         this.name = "root";
         this.ancestors = "0";
         this.timeStamp = 0L;
     }
-    public BaseInfo(String unqId,long userId,String name, long timeStamp, String pid,  String ancestors) {
+    public BaseInfo(long id,long userId,String name, long timeStamp, long pid,  String ancestors) {
         this.userId = userId;
-        this.unqId = unqId;
+        this.id = id;
         this.pid = pid;
         this.name = name;
         this.ancestors = ancestors;
@@ -42,19 +42,19 @@ public class BaseInfo {
         this.userId = userId;
     }
 
-    public String getUnqId() {
-        return unqId;
+    public long getId() {
+        return id;
     }
 
-    public void setUnqId(String unqId) {
-        this.unqId = unqId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getPid() {
+    public long getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
+    public void setPid(long pid) {
         this.pid = pid;
     }
 

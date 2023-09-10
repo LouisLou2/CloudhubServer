@@ -1,13 +1,18 @@
 package com.example.cloudtry.model;
 
-import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.StrUtil;
 import com.example.cloudtry.common.constant.AppConstants;
-import com.example.cloudtry.utils.IdTools;
+import com.example.cloudtry.utils.AvatarTools;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 用户模型
  */
+@AllArgsConstructor
+@Setter
+@Getter
 public class User extends BaseParameter {
 
     /**
@@ -18,7 +23,7 @@ public class User extends BaseParameter {
     /**
      * 昵称
      */
-    private String nickName;
+    private String userName;
 
     /**
      * 邮箱
@@ -66,132 +71,42 @@ public class User extends BaseParameter {
     private Long usedSpaceSize;
 
     public static User initial() {
-        return new User();
+        User user = new User();
+        user.setUserName(StrUtil.EMPTY);
+        user.setEmail(StrUtil.EMPTY);
+        user.setPassword(StrUtil.EMPTY);
+        user.setAvatar(AvatarTools.getDefaultAvatarURL());
+        user.setBirthday(0L);
+        user.setAge(0);
+        user.setGender(-1);
+        user.setPhone(StrUtil.EMPTY);
+        user.setTotalSpaceSize(AppConstants.Account.TOTAL_SPACE_SIZE);
+        user.setUsedSpaceSize(0L);
+        return user;
     }
-
-    public static User initial(String email, String password) {
-        return new User()
-                .setId(IdTools.fastSimpleUuid())
-                .setNickName(email.substring(0, email.indexOf(StrUtil.AT)))
-                .setEmail(email)
-                .setPassword(password)
-                .setAvatar(CharSequenceUtil.EMPTY)
-                .setBirthday(0L)
-                .setAge(0)
-                .setGender(-1)
-                .setPhone(CharSequenceUtil.EMPTY)
-                .setTotalSpaceSize(AppConstants.Account.TOTAL_SPACE_SIZE)
-                .setUsedSpaceSize(0L);
+    public User(){
+        super();
+    }
+    public static User initial(String userName, String phone,String password) {
+        User user = initial();
+        user.setUserName(userName);
+        user.setPassword(password);
+        user.setPhone(phone);
+        return user;
     }
 
     public static User pack(String userId, Long usedSpaceSize) {
-        return new User().setId(userId).setUsedSpaceSize(usedSpaceSize);
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public User setId(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public User setNickName(String nickName) {
-        this.nickName = nickName;
-        return this;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public User setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
-        return this;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public User setAvatar(String avatar) {
-        this.avatar = avatar;
-        return this;
-    }
-
-    public Long getBirthday() {
-        return birthday;
-    }
-
-    public User setBirthday(Long birthday) {
-        this.birthday = birthday;
-        return this;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public User setAge(Integer age) {
-        this.age = age;
-        return this;
-    }
-
-    public Integer getGender() {
-        return gender;
-    }
-
-    public User setGender(Integer gender) {
-        this.gender = gender;
-        return this;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public User setPhone(String phone) {
-        this.phone = phone;
-        return this;
-    }
-
-    public Long getTotalSpaceSize() {
-        return totalSpaceSize;
-    }
-
-    public User setTotalSpaceSize(Long totalSpaceSize) {
-        this.totalSpaceSize = totalSpaceSize;
-        return this;
-    }
-
-    public Long getUsedSpaceSize() {
-        return usedSpaceSize;
-    }
-
-    public User setUsedSpaceSize(Long usedSpaceSize) {
-        this.usedSpaceSize = usedSpaceSize;
-        return this;
+        User user = initial();
+        user.setId(userId);
+        user.setUsedSpaceSize(usedSpaceSize);
+        return user;
     }
 
     @Override
     public String toString() {
         return "User["
                 + " id=" + id + ","
-                + " nickName=" + nickName + ","
+                + " userName=" + userName + ","
                 + " email=" + email + ","
                 + " password=" + password + ","
                 + " avatar=" + avatar + ","

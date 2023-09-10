@@ -1,41 +1,36 @@
 package com.example.cloudtry.dao;
+
 import com.example.cloudtry.model.User;
-public interface UserDao {
-    /**
-     * 记录用户账户信息
-     *
-     * @param user 用户账户信息
-     */
-    void insertUser(User user);
+import org.springframework.stereotype.Service;
 
-    /**
-     * 更新账户空间已用量
-     *
-     * @param user      当前操作用户
-     * @param spaceSize 本次修改的使用量
-     */
-    void updateSpaceSize(User user, Long spaceSize);
+@Service
+public class UserDao {
 
-    /**
-     * 更新用户账户信息
-     *
-     * @param user 新的账户信息
-     */
-    void updateUser(User user);
+    public static boolean checkUserExist(String userName) {
+        return false;
+    }
 
-    /**
-     * 查询用户信息
-     *
-     * @param id 用户 id
-     * @return 用户信息
-     */
-    User queryUserById(String id);
+    public static boolean matchUser(String userName, String password) {
+        return true;
+    }
 
-    /**
-     * 查询用户信息
-     *
-     * @param email 用户邮箱
-     * @return 用户信息
-     */
-    User queryUserByEmail(String email);
+    public static void insertUser(User user) {
+        // 实现插入用户的逻辑
+    }
+
+    public static void updateSpaceSize(User user, Long spaceSize) {
+        // 实现更新用户空间大小的逻辑
+    }
+
+    public static void updateUser(User user) {
+        // 实现更新用户的逻辑
+    }
+
+    public static User queryUserById(String id) {
+        return null;
+    }
+
+    public static User queryUserByEmail(String email) {
+        return null;
+    }
 }

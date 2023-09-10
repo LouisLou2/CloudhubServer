@@ -26,7 +26,7 @@ public class UploadManager {
     @GetMapping("/upload")
     public ResponseEntity<String> CheckUploadFile(@RequestParam String userId , String fileId, String fileName, String fileSize, String folderId,String ancestors) {
 
-        FileInfo afile=new FileInfo(null,0L,null, null,0L,null, 0L,null,null, null, null);
+        FileInfo afile=new FileInfo(0L,0L,null, null,0L,null, 0L,0L,null, null, null);
         JSONObject uploadInfo = JsonTools.initRawUploadInfo();
         boolean exists=BaseDao.SameFileCheck(userId,fileId);
         //如果存在唯一码相同的文件，则调用BaseDao的addAFile方法，其中afile的bucketName和obsObjectKey属性只是null

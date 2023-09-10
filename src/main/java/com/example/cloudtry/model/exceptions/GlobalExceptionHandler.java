@@ -1,6 +1,6 @@
 package com.example.cloudtry.model.exceptions;
 
-import com.example.cloudtry.common.constant.result.AppResultCode;
+import com.example.cloudtry.common.result.AppResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;

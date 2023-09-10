@@ -3,6 +3,8 @@ package com.example.cloudtry.utils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.cloudtry.common.constant.AppConstants;
+import com.example.cloudtry.common.enums.RequestEnum;
+import com.example.cloudtry.common.result.AppResultCode;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -38,10 +40,60 @@ public class JsonTools {
         jsonObject.put("objectKey", URLTools.makeObsObjectKey(fileName,fileId));
         return jsonObject;
     }
-    public static JSONObject initRawUploadInfo(){
-        JSONObject jsonObject=new JSONObject();
-        jsonObject.put("demand",false);
-        return jsonObject;
+    public static JSONObject initRawResponseInfo(RequestEnum type){
+        switch (type){
+            case RequestEnum.SIGN_UP:
+                return initRawSignUpInfo();
+            case RequestEnum.SIGN_IN:
+                return initRawSignInInfo();
+            case RequestEnum.UPLOAD:
+                return initRawUploadInfo();
+            case DOWNLOAD:
+                return initRawDownloadInfo();
+            case DELETE:
+                return initRawDeleteInfo();
+            case COPY:
+                return initRawCopyInfo();
+            case MOVE:
+                return initRawMoveInfo();
+            case RENAME:
+                return initRawRenameInfo();
+            case MKDIR:
+                return initRawMkdirInfo();
+            case BATCH_DELETE:
+                return initRawBatchDeleteInfo();
+            case BATCH_COPY:
+                return initRawBatchCopyInfo();
+            case BATCH_MOVE:
+                return initRawBatchMoveInfo();
+            case ROLLBACK_TRASH:
+                return initRawRollbackTrashInfo();
+            default:
+                return null;
+        }
     }
-
+    public static JSONObject initRawSignUpInfo(){
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.SignUp.UNKNOWN_FAILURE.getCode());
+        return obj;
+    }
+    public static JSONObject initRawSignInInfo(){
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.SignIn.UNKNOWN_FAILURE.getCode());
+        obj.put("User", null);
+        obj.put("rootList", null);
+        return obj;
+    }
+    public static JSONObject initRawCopyInfo(){
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.CopyOrUpload.UNKNOWN_FAILURE.getCode());
+        obj.put("occupation",null);
+        return obj;
+    }
+    public static JSONObject initRawUploadInfo(){
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.CopyOrUpload.UNKNOWN_FAILURE.getCode());
+        obj.put("demand",false);
+        return obj;
+    }
 }

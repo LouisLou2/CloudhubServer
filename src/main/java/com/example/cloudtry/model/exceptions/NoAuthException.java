@@ -1,5 +1,5 @@
 package com.example.cloudtry.model.exceptions;
-import com.example.cloudtry.common.constant.result.ResultInfo;
+import com.example.cloudtry.common.result.ResultInfo;
 
 /**
  * 权限不足异常

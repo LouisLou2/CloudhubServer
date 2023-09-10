@@ -3,9 +3,6 @@ import java.io.File;
 
 /**
  * 应用变量，不可修改
- *
- * @author zhuboyang
- * @since 2023/8/15 16:47
  */
 public interface AppConstants {
 
@@ -79,6 +76,9 @@ public interface AppConstants {
         Long ACCOUNT_NOT_EXIST_STATUS = -2L;
         // 账户空间
         String SPACE_UPDATE = "space_update:";
+        interface Avatar{
+            String BUCKETNAME = "user_avatar";
+        }
     }
 
     /**

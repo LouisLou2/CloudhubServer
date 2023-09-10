@@ -25,6 +25,8 @@ dependencies {
     testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.5'
     //
     implementation 'cn.hutool:hutool-all:5.8.21'
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
 }
 
 tasks.named('test') {

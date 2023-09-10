@@ -1,4 +1,4 @@
-package com.example.cloudtry.common.constant.result;
+package com.example.cloudtry.common.result;
 
 public enum Msg {
     /**
