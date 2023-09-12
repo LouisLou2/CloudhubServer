@@ -13,6 +13,14 @@ public class FileInfo extends BaseInfo {
     //constructor
     public FileInfo() {
     }
+    public FileInfo(long id,long userId,String hash, String name, long size, FileTypeEnum type,long timeStamp, long pid) {
+        super(id, BaseTypeEnum.FILE, userId,name,timeStamp,pid);
+        this.hash = hash;
+        this.size = size;
+        this.type = type;
+        this.bucketName="";
+        this.objectKey="";
+    }
     public FileInfo(long id,long userId,String hash, String name, long size, FileTypeEnum type,long timeStamp, long pid,String bucketName, String objectKey) {
         super(id, BaseTypeEnum.FILE, userId,name,timeStamp,pid);
         this.hash = hash;

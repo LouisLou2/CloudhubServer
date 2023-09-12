@@ -30,7 +30,7 @@ public class ServerMain {
         ServerProperties.Servlet servlet = serverProperties.getServlet();
         String contextPath = servlet.getContextPath();
         String urlSuffix = StringUtils.isBlank(contextPath)? String.valueOf(port):port+contextPath;
-        logger.info("kkFileView 服务启动完成，耗时:{}s，演示页请访问: http://192.168.146.121:{} ", stopWatch.getTotalTimeSeconds(), urlSuffix);
+        logger.info("kkFileView 服务启动完成，耗时:{}s，演示页请访问: http://192.168.195.121:{} ", stopWatch.getTotalTimeSeconds(), urlSuffix);
     }
 
 }

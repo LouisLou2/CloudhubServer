@@ -18,4 +18,16 @@ public enum YesOrNoEnum{
 
     final Integer code;
     final String msg;
+    public static YesOrNoEnum getEnumByCode(int code){
+        for(YesOrNoEnum e:YesOrNoEnum.values()){
+            if(e.getCode()==code){
+                return e;
+            }
+        }
+        return null;
+    }
+    YesOrNoEnum(int code){
+        this.code=code;
+        this.msg="";
+    }
 }

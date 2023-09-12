@@ -18,61 +18,52 @@ public class User extends BaseParameter {
     /**
      * 主键
      */
-    private String id;
-
+    private long id;
     /**
-     * 昵称
+     * 用户名
      */
-    private String userName;
-
-    /**
-     * 邮箱
-     */
-    private String email;
-
+    private String name;
     /**
      * 密码
      */
     private String password;
-
-    /**
-     * 头像地址
-     */
-    private String avatar;
-
-    /**
-     * 生日
-     */
-    private Long birthday;
-
-    /**
-     * 年龄
-     */
-    private Integer age;
-
-    /**
-     * 性别
-     */
-    private Integer gender;
-
     /**
      * 手机号
      */
     private String phone;
-
+    /**
+     * 头像地址
+     */
+    private String avatar;
+    /**
+     * 邮箱
+     */
+    private String email;
     /**
      * 账户总容量
      */
-    private Long totalSpaceSize;
+    private long totalSpaceSize;
 
     /**
      * 账户已用容量
      */
-    private Long usedSpaceSize;
+    private long usedSpace;
+    /**
+     * 性别
+     */
+    private int gender;
+    /**
+     * 年龄
+     */
+    private int age;
+    /**
+     * 生日
+     */
+    private long birthday;
 
     public static User initial() {
         User user = new User();
-        user.setUserName(StrUtil.EMPTY);
+        user.setName(StrUtil.EMPTY);
         user.setEmail(StrUtil.EMPTY);
         user.setPassword(StrUtil.EMPTY);
         user.setAvatar(AvatarTools.getDefaultAvatarURL());
@@ -81,7 +72,7 @@ public class User extends BaseParameter {
         user.setGender(-1);
         user.setPhone(StrUtil.EMPTY);
         user.setTotalSpaceSize(AppConstants.Account.TOTAL_SPACE_SIZE);
-        user.setUsedSpaceSize(0L);
+        user.setUsedSpace(0L);
         return user;
     }
     public User(){
@@ -89,16 +80,16 @@ public class User extends BaseParameter {
     }
     public static User initial(String userName, String phone,String password) {
         User user = initial();
-        user.setUserName(userName);
+        user.setName(userName);
         user.setPassword(password);
         user.setPhone(phone);
         return user;
     }
 
-    public static User pack(String userId, Long usedSpaceSize) {
+    public static User pack(long userId, long usedSpace) {
         User user = initial();
         user.setId(userId);
-        user.setUsedSpaceSize(usedSpaceSize);
+        user.setUsedSpace(usedSpace);
         return user;
     }
 
@@ -106,7 +97,7 @@ public class User extends BaseParameter {
     public String toString() {
         return "User["
                 + " id=" + id + ","
-                + " userName=" + userName + ","
+                + " name=" + name + ","
                 + " email=" + email + ","
                 + " password=" + password + ","
                 + " avatar=" + avatar + ","
@@ -115,7 +106,7 @@ public class User extends BaseParameter {
                 + " gender=" + gender + ","
                 + " phone=" + phone + ","
                 + " totalSpaceSize=" + totalSpaceSize + ","
-                + " usedSpaceSize=" + usedSpaceSize
+                + " usedSpaceSize=" + usedSpace
                 + " ]"
                 + " "
                 + super.toString();

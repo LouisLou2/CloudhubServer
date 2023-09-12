@@ -4,12 +4,15 @@ import cn.keking.normal.common.enums.BaseTypeEnum;
 import cn.keking.normal.dao.FileDao;
 import cn.keking.normal.model.storage.MiniInfo;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
 
 public class StorageAlgo {
+    @Resource
+    private static FileDao fileDao;
     public static long getFolderSize(long folderId){
-        List<MiniInfo> list= FileDao.getMiniChildList(folderId);
+        List<MiniInfo> list= fileDao.getMiniChildList(folderId);
         return getListSize_inner(list,0);
     }
     public static long getListSize(List<MiniInfo> list){
@@ -18,9 +21,9 @@ public class StorageAlgo {
     private static long getListSize_inner(List<MiniInfo> list, long size){
         for(MiniInfo info:list){
             if(info.getBaseType()== BaseTypeEnum.FOLDER){
-                size+=getListSize_inner(Objects.requireNonNull(FileDao.getMiniChildList(info.getId())),size);
+                size+=getListSize_inner(Objects.requireNonNull(fileDao.getMiniChildList(info.getId())),size);
             }else{
-                size+=FileDao.getFileSize(info.getId());
+                size+=fileDao.getSizeByFileId(info.getId());
             }
         }
         return size;

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * 用户服务接口
  */
-public interface UserService {
+public interface UserBaseService {
 
     /**
      * 初始化账户信息
@@ -23,6 +23,9 @@ public interface UserService {
      * @param password
      * @return
      */
-    public ResponseEntity<String> enter(@RequestParam(name = "userName",required = true) String userName,
+    ResponseEntity<String> enter(@RequestParam(name = "userName",required = true) String userName,
                                         @RequestParam(name = "password") String password);
+    ResponseEntity<String> update(@RequestParam(name = "key",required = true) String key,
+                                  @RequestParam(name = "userId") String userId,
+                                 @RequestParam(name = "newKey") String newKey);
 }

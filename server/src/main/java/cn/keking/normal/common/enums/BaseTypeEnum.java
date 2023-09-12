@@ -10,6 +10,18 @@ public enum BaseTypeEnum{
     FILE(1,"file"),
 
     USER(2,"user");
-    final Integer code;
+    final int code;
     final String msg;
+    public static BaseTypeEnum getEnumByCode(int code){
+        for(BaseTypeEnum e:BaseTypeEnum.values()){
+            if(e.getCode()==code){
+                return e;
+            }
+        }
+        return null;
+    }
+    BaseTypeEnum(int code){
+        this.code=code;
+        this.msg="";
+    }
 }

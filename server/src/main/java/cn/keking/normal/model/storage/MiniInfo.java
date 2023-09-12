@@ -11,4 +11,8 @@ import lombok.Setter;
 public class MiniInfo {
     private long id;
     private BaseTypeEnum baseType;
+    public MiniInfo(long id,int baseType){
+        this.id=id;
+        this.baseType=BaseTypeEnum.getEnumByCode(baseType);
+    }
 }

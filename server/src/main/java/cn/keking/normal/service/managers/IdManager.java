@@ -2,11 +2,14 @@ package cn.keking.normal.service.managers;
 
 import cn.hutool.core.util.IdUtil;
 import cn.keking.normal.common.enums.BaseTypeEnum;
-import cn.keking.normal.dao.BaseDao;
+import cn.keking.normal.dao.IdMarkDao;
 
+import javax.annotation.Resource;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class IdManager {
+    @Resource
+    private IdMarkDao idMarkDao;
     private static IdManager instance;
 
     private AtomicLong fileId;
@@ -16,9 +19,9 @@ public class IdManager {
 
     private IdManager() {
         // 私有构造函数，防止外部直接实例化
-        fileId = new AtomicLong(BaseDao.MaxIdExisted(BaseTypeEnum.FILE));
-        folderId =new AtomicLong (BaseDao.MaxIdExisted(BaseTypeEnum.FOLDER));
-        userId = new AtomicLong(BaseDao.MaxIdExisted(BaseTypeEnum.USER));
+        fileId = new AtomicLong(idMarkDao.getMaxId(BaseTypeEnum.FILE));
+        folderId =new AtomicLong (idMarkDao.getMaxId(BaseTypeEnum.FOLDER));
+        userId = new AtomicLong(idMarkDao.getMaxId(BaseTypeEnum.USER));
     }
 
     // 公共静态方法，用于获取单例实例
@@ -34,19 +37,16 @@ public class IdManager {
     }
 
     public long generateIdAndUpdate(BaseTypeEnum type) {
-        updateId(type);
-        switch (type) {
-            case FILE:
-                return fileId.incrementAndGet();
-            case FOLDER:
-                return folderId.incrementAndGet();
-            case USER:
-                return userId.incrementAndGet();
-            default:
-                return -1;
-        }
+        long newId = switch (type) {
+            case FILE -> fileId.incrementAndGet();
+            case FOLDER -> folderId.incrementAndGet();
+            case USER -> userId.incrementAndGet();
+            default -> -1;
+        };
+        idMarkDao.updateMaxId(type, newId);
+        return newId;
     }
-
+    //注意，这个方法不会更新数据库，只会返回期望的新id
     public long generateId(BaseTypeEnum type) {
         switch (type) {
             case FILE:
@@ -60,7 +60,7 @@ public class IdManager {
         }
     }
 
-    public void updateId(BaseTypeEnum type) {
-        BaseDao.updateMaxId(type, generateId(type));
-    }
+    //public void updateId(BaseTypeEnum type) {
+    //    BaseDao.updateMaxId(type, generateId(type));
+    //}
 }

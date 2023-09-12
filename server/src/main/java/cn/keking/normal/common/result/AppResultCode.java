@@ -43,7 +43,8 @@ public interface AppResultCode {
         SUCCESS(400,"操作成功"),
         FAILURE(401,"操作失败"),
         NOT_LOGIN(402,"未登录,不允许此类操作"),
-        UNKNOWN_FAILURE(402,"未知错误");
+        UNKNOWN_FAILURE(402,"未知错误"),
+        REQUEST_ERROR(403,"请求错误");
         private final int code;
         private final String msg;
     }
@@ -54,6 +55,28 @@ public interface AppResultCode {
         FAILURE(501, "操作被驳回"),
         CLOUD_NOT_ENOUGH(502, "网盘空间不足"),
         UNKNOWN_FAILURE(502, "未知错误");
+        private final int code;
+        private final String msg;
+    }
+    @AllArgsConstructor
+    @Getter
+    enum USER_UPDATE{
+        SUCCESS(600,"操作成功"),
+        FAILURE(601,"操作失败"),
+        HAS_REGISTERED(602,"用户名已被注册"),
+        UNKNOWN_FAILURE(603,"未知错误"),
+        REQUEST_ERROR(604,"请求错误");
+        private final int code;
+        private final String msg;
+    }
+    @AllArgsConstructor
+    @Getter
+    enum FILE_FOLDER_UPDATE{
+        SUCCESS(700,"操作成功"),
+        FAILURE(701,"操作失败"),
+        SAME_NAME(702,"在相同目录下不能创建同名文件/文件夹"),
+        UNKNOWN_FAILURE(703,"未知错误"),
+        REQUEST_ERROR(704,"请求错误");
         private final int code;
         private final String msg;
     }

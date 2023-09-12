@@ -52,10 +52,29 @@ public class JsonTools {
                 return initRawDownloadInfo();
             case PREVIEW:
                 return initRawPreviewInfo();
+            case COPY:
+                return initRawCopyInfo();
+            case DELETE:
+                return initRawDeleteInfo();
+            case LIST:
+                return initRawListInfo();
+            case UPDATE_USER_INFO:
+                return initRawUpdateUserInfo();
+            case CREATE_FOLDER:
+                return initRawCreateFolderInfo();
+            case RENAME:
+                return initRawRenameInfo();
             default:
                 return null;
         }
     }
+
+    private static JSONObject initRawDeleteInfo() {
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.OPERATE.UNKNOWN_FAILURE.getCode());
+        return obj;
+    }
+
     public static JSONObject initRawSignUpInfo(){
         JSONObject obj=new JSONObject();
         obj.put("resultCode", AppResultCode.SignUp.UNKNOWN_FAILURE.getCode());
@@ -87,6 +106,26 @@ public class JsonTools {
         return obj;
     }
     public static JSONObject initRawPreviewInfo(){
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.OPERATE.UNKNOWN_FAILURE.getCode());
+        return obj;
+    }
+    public static JSONObject initRawListInfo(){
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.OPERATE.UNKNOWN_FAILURE.getCode());
+        return obj;
+    }
+    public static JSONObject initRawUpdateUserInfo(){
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.USER_UPDATE.UNKNOWN_FAILURE.getCode());
+        return obj;
+    }
+    public static JSONObject initRawCreateFolderInfo(){
+        JSONObject obj=new JSONObject();
+        obj.put("resultCode", AppResultCode.OPERATE.UNKNOWN_FAILURE.getCode());
+        return obj;
+    }
+    public static JSONObject initRawRenameInfo(){
         JSONObject obj=new JSONObject();
         obj.put("resultCode", AppResultCode.OPERATE.UNKNOWN_FAILURE.getCode());
         return obj;

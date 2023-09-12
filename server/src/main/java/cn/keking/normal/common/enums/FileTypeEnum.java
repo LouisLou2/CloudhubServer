@@ -25,4 +25,8 @@ public enum FileTypeEnum{
         }
         return null;
     }
+    FileTypeEnum(int code) {
+        this.code = code;
+        this.msg = "";
+    }
 }
