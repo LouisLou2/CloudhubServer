@@ -1,14 +1,8 @@
-
-  _      _      ______   _   _         __      __  _
- | |    | |    |  ____| (_) | |        \ \    / / (_)
- | | __ | | __ | |__     _  | |   ___   \ \  / /   _    ___  __      __
- | |/ / | |/ / |  __|   | | | |  / _ \   \ \/ /   | |  / _ \ \ \ /\ / /
- |   <  |   <  | |      | | | | |  __/    \  /    | | |  __/  \ V  V /
- |_|\_\ |_|\_\ |_|      |_| |_|  \___|     \/     |_|  \___|   \_/\_/
+    ____ _                 _ _           _
+   / ___| | ___  _   _  __| | |__  _   _| |__
+  | |   | |/ _ \| | | |/ _` | '_ \| | | | '_ \
+  | |___| | (_) | |_| | (_| | | | | |_| | |_) |
+   \____|_|\___/ \__,_|\__,_|_| |_|\__,_|_.__/
 
  => Spring Boot             ::  ${spring-boot.version}
- => kkFileView              ::  4.4.0-SNAPSHOT
- => Home site               ::  https://kkview.cn
- => Github                  ::  https://github.com/kekingcn/kkFileView
- => Gitee                   ::  https://gitee.com/kekingcn/file-online-preview
- => kk opensource community ::  https://t.zsxq.com/09ZHSXbsQ
+ => Cloudhub              ::  4.4.0-SNAPSHOT
