@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_package = "com.leo.cloudhubserver.model.wrapper";
+option java_outer_classname = "ResponseWrapperProto";
+message ResponseWrapper {
+  int32 code = 1;
+  string error = 2;
+  map<string, string> loading = 3;
+}
